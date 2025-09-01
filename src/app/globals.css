@@ -1,26 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Optional: layer for custom global styles */
+@layer base {
+  html, body {
+    @apply min-h-dvh bg-slate-950 text-slate-100 antialiased;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Optional: custom components (buttons, cards, etc.) */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium;
+  }
+  .btn-primary {
+    @apply btn bg-slate-100 text-slate-900 hover:opacity-90 active:scale-[.98];
+  }
+  .btn-outline {
+    @apply btn border border-slate-700 text-slate-200 hover:bg-slate-800;
+  }
+}
+
+/* Optional: utilities if you want to extend Tailwind */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
